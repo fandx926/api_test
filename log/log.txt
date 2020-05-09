@@ -1,0 +1,411 @@
+
+[2018-09-13 10:48:34] INFO [<module>: run_all.py, 5] ================================== 测试开始 ==================================
+[2018-09-13 10:48:34] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 10:48:34] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_login_normal
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/login/
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "张三","password":"123456"}
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 11] 期望结果：<h1>登录成功</h1>
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 12] 实际结果：<h1>登录成功</h1>
+[2018-09-13 10:48:34] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 10:48:34] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_login_password_wrong
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/login/
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "张三","password":"1234567"}
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 11] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 12] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2018-09-13 10:48:34] DEBUG [query_db: db.py, 18] select * from user where name = '张三'
+[2018-09-13 10:48:34] DEBUG [query_db: db.py, 24] ((2, '张三', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 10:48:34] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 10:48:34] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 152
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_reg_exist
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "张三", "password": "123456"}
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 11] 期望结果：{'code': '100001', 'msg': '失败，用户已存在', 'data': {'name': '张三', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 12] 实际结果：{"code": "100001", "data": {"name": "张三", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "失败，用户已存在"}
+[2018-09-13 10:48:34] DEBUG [query_db: db.py, 18] select * from user where name = '范冰冰'
+[2018-09-13 10:48:34] DEBUG [query_db: db.py, 24] ()
+[2018-09-13 10:48:34] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 10:48:34] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 122
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_reg_normal
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "范冰冰", "password": "123456"}
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 11] 期望结果：{'code': '100000', 'msg': '成功', 'data': {'name': '范冰冰', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 10:48:34] INFO [log_case_info: case_log.py, 12] 实际结果：{"code": "100000", "data": {"name": "范冰冰", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "成功"}
+[2018-09-13 10:48:34] DEBUG [query_db: db.py, 18] select * from user where name = '范冰冰'
+[2018-09-13 10:48:34] DEBUG [query_db: db.py, 24] ((25, '范冰冰', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 10:48:34] DEBUG [change_db: db.py, 32] delete from user where name='范冰冰'
+[2018-09-13 10:48:35] INFO [<module>: run_all.py, 11] ================================== 测试结束 ==================================
+[2018-09-13 11:58:31] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 11:58:31] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 11:58:31] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_login_normal
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/login/
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "张三","password":"123456"}
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 11] 期望结果：<h1>登录成功</h1>
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 12] 实际结果：<h1>登录成功</h1>
+[2018-09-13 11:58:31] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 11:58:31] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_login_password_wrong
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/login/
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "张三","password":"1234567"}
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 11] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 12] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2018-09-13 11:58:31] DEBUG [query_db: db.py, 18] select * from user where name = '张三'
+[2018-09-13 11:58:31] DEBUG [query_db: db.py, 24] ((2, '张三', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 11:58:31] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 11:58:31] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 152
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_reg_exist
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "张三", "password": "123456"}
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 11] 期望结果：{'code': '100001', 'msg': '失败，用户已存在', 'data': {'name': '张三', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 12] 实际结果：{"code": "100001", "data": {"name": "张三", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "失败，用户已存在"}
+[2018-09-13 11:58:31] DEBUG [query_db: db.py, 18] select * from user where name = '范冰冰'
+[2018-09-13 11:58:31] DEBUG [query_db: db.py, 24] ()
+[2018-09-13 11:58:31] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 11:58:31] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 122
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_reg_normal
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "范冰冰", "password": "123456"}
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 11] 期望结果：{'code': '100000', 'msg': '成功', 'data': {'name': '范冰冰', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 11:58:31] INFO [log_case_info: case_log.py, 12] 实际结果：{"code": "100000", "data": {"name": "范冰冰", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "成功"}
+[2018-09-13 11:58:31] DEBUG [query_db: db.py, 18] select * from user where name = '范冰冰'
+[2018-09-13 11:58:31] DEBUG [query_db: db.py, 24] ((26, '范冰冰', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 11:58:31] DEBUG [change_db: db.py, 32] delete from user where name='范冰冰'
+[2018-09-13 11:58:33] INFO [send_email: send_email.py, 43] 邮件发送完成！
+[2018-09-13 11:58:33] INFO [<module>: run_all.py, 13] ================================== 测试结束 ==================================
+[2018-09-13 12:19:43] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 12:19:43] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 12:19:43] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_login_normal
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/login/
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "张三","password":"123456"}
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 11] 期望结果：<h1>登录成功</h1>
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 12] 实际结果：<h1>登录成功</h1>
+[2018-09-13 12:19:43] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 12:19:43] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_login_password_wrong
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/login/
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "张三","password":"1234567"}
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 11] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2018-09-13 12:19:43] INFO [log_case_info: case_log.py, 12] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2018-09-13 12:19:43] DEBUG [query_db: db.py, 19] select * from user where name = '张三'
+[2018-09-13 12:19:44] DEBUG [query_db: db.py, 25] ((2, '张三', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 12:19:44] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 12:19:44] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 152
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_reg_exist
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "张三", "password": "123456"}
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 11] 期望结果：{'code': '100001', 'msg': '失败，用户已存在', 'data': {'name': '张三', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 12] 实际结果：{"code": "100001", "data": {"name": "张三", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "失败，用户已存在"}
+[2018-09-13 12:19:44] DEBUG [query_db: db.py, 19] select * from user where name = '范冰冰'
+[2018-09-13 12:19:44] DEBUG [query_db: db.py, 25] ()
+[2018-09-13 12:19:44] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 12:19:44] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 122
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 8] 测试用例：test_user_reg_normal
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 9] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 10] 请求参数：{"name": "范冰冰", "password": "123456"}
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 11] 期望结果：{'code': '100000', 'msg': '成功', 'data': {'name': '范冰冰', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 12:19:44] INFO [log_case_info: case_log.py, 12] 实际结果：{"code": "100000", "data": {"name": "范冰冰", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "成功"}
+[2018-09-13 12:19:44] DEBUG [query_db: db.py, 19] select * from user where name = '范冰冰'
+[2018-09-13 12:19:44] DEBUG [query_db: db.py, 25] ((28, '范冰冰', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 12:19:44] DEBUG [change_db: db.py, 33] delete from user where name='范冰冰'
+[2018-09-13 12:19:49] INFO [send_email: send_email.py, 42] 邮件发送完成！
+[2018-09-13 12:19:49] INFO [<module>: run_all.py, 13] ================================== 测试结束 ==================================
+[2018-09-13 13:06:48] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 13:07:01] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 13:08:18] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 13:08:20] INFO [send_email: send_email.py, 44] 邮件发送完成！
+[2018-09-13 13:08:20] INFO [<module>: run_all.py, 13] ================================== 测试结束 ==================================
+[2018-09-13 13:09:17] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 13:09:52] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 13:10:56] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 13:14:27] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 13:14:27] ERROR [test_user_login_normal: test_user_login.py, 20] 用例数据不存在
+[2018-09-13 13:14:27] ERROR [test_user_login_password_wrong: test_user_login.py, 33] 用例数据不存在
+[2018-09-13 13:14:27] DEBUG [query_db: db.py, 21] select * from user where name = '张三'
+[2018-09-13 13:14:27] DEBUG [query_db: db.py, 27] ((2, '张三', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 13:14:27] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 13:14:28] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 152
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_reg_exist
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三", "password": "123456"}
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 13] 期望结果：{'code': '100001', 'msg': '失败，用户已存在', 'data': {'name': '张三', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 14] 实际结果：{"code": "100001", "data": {"name": "张三", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "失败，用户已存在"}
+[2018-09-13 13:14:28] DEBUG [query_db: db.py, 21] select * from user where name = '范冰冰'
+[2018-09-13 13:14:28] DEBUG [query_db: db.py, 27] ()
+[2018-09-13 13:14:28] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 13:14:28] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 122
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_reg_normal
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "范冰冰", "password": "123456"}
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 13] 期望结果：{'code': '100000', 'msg': '成功', 'data': {'name': '范冰冰', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 13:14:28] INFO [log_case_info: case_log.py, 14] 实际结果：{"code": "100000", "data": {"name": "范冰冰", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "成功"}
+[2018-09-13 13:14:28] DEBUG [query_db: db.py, 21] select * from user where name = '范冰冰'
+[2018-09-13 13:14:28] DEBUG [query_db: db.py, 27] ((29, '范冰冰', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 13:14:28] DEBUG [change_db: db.py, 35] delete from user where name='范冰冰'
+[2018-09-13 13:14:29] INFO [send_email: send_email.py, 44] 邮件发送完成！
+[2018-09-13 13:14:29] INFO [<module>: run_all.py, 14] ================================== 测试结束 ==================================
+[2018-09-13 13:16:59] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2018-09-13 13:16:59] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 13:16:59] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2018-09-13 13:16:59] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 13:16:59] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2018-09-13 13:16:59] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2018-09-13 13:16:59] DEBUG [query_db: db.py, 21] select * from user where name = '张三'
+[2018-09-13 13:16:59] DEBUG [query_db: db.py, 27] ((2, '张三', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 13:16:59] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 13:17:00] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 152
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_reg_exist
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三", "password": "123456"}
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 13] 期望结果：{'code': '100001', 'msg': '失败，用户已存在', 'data': {'name': '张三', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 14] 实际结果：{"code": "100001", "data": {"name": "张三", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "失败，用户已存在"}
+[2018-09-13 13:17:00] DEBUG [query_db: db.py, 21] select * from user where name = '范冰冰'
+[2018-09-13 13:17:00] DEBUG [query_db: db.py, 27] ()
+[2018-09-13 13:17:00] DEBUG [_new_conn: connectionpool.py, 205] Starting new HTTP connection (1): 115.28.108.130:5000
+[2018-09-13 13:17:00] DEBUG [_make_request: connectionpool.py, 393] http://115.28.108.130:5000 "POST /api/user/reg/ HTTP/1.1" 200 122
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_reg_normal
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/reg/
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "范冰冰", "password": "123456"}
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 13] 期望结果：{'code': '100000', 'msg': '成功', 'data': {'name': '范冰冰', 'password': 'e10adc3949ba59abbe56e057f20f883e'}}
+[2018-09-13 13:17:00] INFO [log_case_info: case_log.py, 14] 实际结果：{"code": "100000", "data": {"name": "范冰冰", "password": "e10adc3949ba59abbe56e057f20f883e"}, "msg": "成功"}
+[2018-09-13 13:17:00] DEBUG [query_db: db.py, 21] select * from user where name = '范冰冰'
+[2018-09-13 13:17:00] DEBUG [query_db: db.py, 27] ((30, '范冰冰', 'e10adc3949ba59abbe56e057f20f883e'),)
+[2018-09-13 13:17:00] DEBUG [change_db: db.py, 35] delete from user where name='范冰冰'
+[2018-09-13 13:17:01] INFO [send_email: send_email.py, 44] 邮件发送完成！
+[2018-09-13 13:17:01] INFO [<module>: run_all.py, 13] ================================== 测试结束 ==================================
+[2020-05-07 14:29:34] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2020-05-07 14:29:34] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 14:29:34] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 14:29:34] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 14:29:34] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 14:29:34] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 14:29:35] ERROR [send_email: send_email.py, 46] (535, b'5.7.8 authentication failed')
+[2020-05-07 14:29:35] INFO [<module>: run_all.py, 13] ================================== 测试结束 ==================================
+[2020-05-07 14:32:19] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2020-05-07 14:32:19] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 14:32:19] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 14:32:19] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 14:32:19] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 14:32:19] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 14:32:20] ERROR [send_email: send_email.py, 46] (535, b'Error: authentication failed')
+[2020-05-07 14:32:20] INFO [<module>: run_all.py, 13] ================================== 测试结束 ==================================
+[2020-05-07 14:37:12] INFO [<module>: run_all.py, 6] ================================== 测试开始 ==================================
+[2020-05-07 14:37:12] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 14:37:12] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 14:37:12] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 14:37:12] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 14:37:12] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 14:37:12] ERROR [send_email: send_email.py, 46] (535, b'Error: authentication failed')
+[2020-05-07 14:37:12] INFO [<module>: run_all.py, 13] ================================== 测试结束 ==================================
+[2020-05-07 15:06:07] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 15:07:27] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 15:07:27] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:07:27] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 15:07:27] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:07:27] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:07:27] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:07:42] ERROR [send_email: send_email.py, 50] (535, b'Error: authentication failed')
+[2020-05-07 15:07:42] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 15:14:01] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 15:14:01] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:14:01] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 15:14:01] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:14:01] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:14:01] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:14:11] ERROR [send_email: send_email.py, 50] (535, b'Error: authentication failed')
+[2020-05-07 15:14:11] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 15:18:24] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 15:18:25] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:18:25] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 15:18:25] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:18:25] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:18:25] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:18:25] ERROR [send_email: send_email.py, 50] (535, b'Error: authentication failed')
+[2020-05-07 15:18:25] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 15:22:44] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 15:22:44] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:22:44] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 15:22:44] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:22:44] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:22:44] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:22:44] ERROR [send_email: send_email.py, 50] 'function' object is not iterable
+[2020-05-07 15:22:44] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 15:23:52] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 15:23:52] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:23:52] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 15:23:52] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:23:52] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:23:52] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:23:52] ERROR [send_email: send_email.py, 50] 'function' object is not iterable
+[2020-05-07 15:23:52] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 15:26:46] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 15:26:46] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:26:46] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 15:26:46] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:26:46] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:26:46] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:27:01] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 15:27:01] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:27:01] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 21
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_normal
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"123456"}
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>登录成功</h1>
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>登录成功</h1>
+[2020-05-07 15:27:01] DEBUG [_new_conn: connectionpool.py, 207] Starting new HTTP connection (1): 115.28.108.130
+[2020-05-07 15:27:01] DEBUG [_make_request: connectionpool.py, 394] http://115.28.108.130:5000 "POST /api/user/login/ HTTP/1.1" 200 42
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 10] 测试用例：test_user_login_password_wrong
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 11] url：http://115.28.108.130:5000/api/user/login/
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 12] 请求参数：{"name": "张三","password":"1234567"}
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 13] 期望结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:27:01] INFO [log_case_info: case_log.py, 14] 实际结果：<h1>失败，用户名或密码错误</h1>
+[2020-05-07 15:27:08] ERROR [send_email1: send_email.py, 50] 'function' object is not iterable
+[2020-05-07 15:27:08] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 15:30:37] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 15:30:38] ERROR [send_email1: send_email.py, 50] 'function' object is not iterable
+[2020-05-07 15:30:38] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 16:22:13] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 16:22:14] ERROR [send_email1: send_email.py, 50] 'function' object is not iterable
+[2020-05-07 16:22:14] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 16:29:31] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 16:29:32] ERROR [send_email1: send_email.py, 50] 'function' object is not iterable
+[2020-05-07 16:29:32] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 16:29:35] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 16:29:35] ERROR [send_email1: send_email.py, 50] 'function' object is not iterable
+[2020-05-07 16:29:35] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 18:22:59] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 18:22:59] ERROR [send_email1: send_email.py, 49] 'function' object is not iterable
+[2020-05-07 18:22:59] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 18:24:50] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-07 18:24:51] ERROR [send_email1: send_email.py, 49] 'function' object is not iterable
+[2020-05-07 18:24:51] INFO [<module>: run_all.py, 15] ================================== 测试结束 ==================================
+[2020-05-07 18:28:53] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-08 15:20:52] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-08 15:21:18] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-08 15:22:04] INFO [<module>: run_all.py, 8] ================================== 测试开始 ==================================
+[2020-05-08 15:22:49] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-08 15:23:07] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-08 15:23:33] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-08 15:24:11] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-08 15:29:59] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-08 15:38:03] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-08 15:38:17] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-08 15:38:36] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-08 15:39:09] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-08 15:39:11] INFO [send_email: send_email.py, 76] 邮件发送完成！
+[2020-05-08 15:39:11] INFO [<module>: run_all.py, 16] ================================== 测试结束 ==================================
+[2020-05-09 15:11:26] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-09 15:11:45] INFO [send_email: send_email.py, 79] 邮件发送完成！
+[2020-05-09 15:11:45] INFO [<module>: run_all.py, 16] ================================== 测试结束 ==================================
+[2020-05-09 15:23:21] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-09 15:23:21] INFO [send_email: send_email.py, 79] 邮件发送完成！
+[2020-05-09 15:23:21] INFO [<module>: run_all.py, 16] ================================== 测试结束 ==================================
+[2020-05-09 15:33:06] INFO [<module>: run_all.py, 10] ================================== 测试开始 ==================================
+[2020-05-09 15:33:12] INFO [send_email: send_email.py, 79] 邮件发送完成！
+[2020-05-09 15:33:12] INFO [<module>: run_all.py, 17] ================================== 测试结束 ==================================
+[2020-05-09 15:37:22] INFO [<module>: run_all.py, 10] ================================== 测试开始 ==================================
+[2020-05-09 15:37:23] INFO [send_email: send_email.py, 79] 邮件发送完成！
+[2020-05-09 15:37:23] INFO [<module>: run_all.py, 17] ================================== 测试结束 ==================================
+[2020-05-09 15:37:46] INFO [<module>: run_all.py, 10] ================================== 测试开始 ==================================
+[2020-05-09 15:37:46] INFO [send_email: send_email.py, 79] 邮件发送完成！
+[2020-05-09 15:37:46] INFO [<module>: run_all.py, 17] ================================== 测试结束 ==================================
+[2020-05-09 15:48:54] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-09 15:48:59] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-09 15:51:14] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-09 15:51:21] INFO [send_email: send_email.py, 79] 邮件发送完成！
+[2020-05-09 15:51:21] INFO [<module>: run_all.py, 16] ================================== 测试结束 ==================================
+[2020-05-09 15:52:59] INFO [<module>: run_all.py, 9] ================================== 测试开始 ==================================
+[2020-05-09 15:53:03] INFO [send_email: send_email.py, 79] 邮件发送完成！
+[2020-05-09 15:53:03] INFO [<module>: run_all.py, 16] ================================== 测试结束 ==================================
